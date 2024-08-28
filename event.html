@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // js events are sequentially runned
+    // document.getElemntByid('owl').onclick = function(){
+    // alert("owl clicked")}
+    // attachEvent
+    // jQuery - on
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("clicked inside the ul");
+    }, false)
+    // type, timestamp,defaultprevented
+    // target,toElement, srcElement, cuurenttarget, clientx,clienty,screex,screeny,altkey,ctrlkey,shiftkey,keycode
+
+
+    // event propagation
+    // two types event bubbling and event capturing
+    // by deafult - bubbling
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("owl clicked");
+        e.stopPropagation()
+    }, false)
+    // false paramter h matlb bubbling hogi to bubbling bottom to top hoti h to jab owl wali img pe click karenge to pahle owl clicked print hoga aur phir clicked inside ul vice versa jab true mode hoga matlb capturing to wo propagate top to bottom karega to us hissab se print hoga ye sab use case pe depend karta h
+
+    document.getElementById("google").addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("google clicked");
+    }, false)
+
+
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target.tagName);
+        if(e.target.tagName === 'IMG'){
+            let removeit = e.target.parentNode
+            removeit.remove()
+
+        }
+        
+       
+    })
+    // removeit.parentNode.removeChild(removeit);
+
+</script>
+</html>
