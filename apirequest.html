@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+    <!-- api request ready state codes-->
+    0 UNSENT client has been created. open()  not called yet.
+    1 OPENED open() has been called
+    2 HEADERS_RECEIVED send() has been called, and headers and status are available
+    3 LOADING Downloading; responsetext holds partial data.
+    4 DONE The operation is complete
+
+</body>
+<script>
+    const requesturl = 'https://api.github.com/users/hiteshchoudhary'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requesturl)
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4) {
+            // string to object conversion ke liye json use karenge
+            const data = JSON.parse(this.responseText)
+            console.log(data.followers);
+        }
+    }
+    xhr.send()
+    // console.log is a debugger tool or browser dev tool
+    // it mainly inject runtime of js
+
+</script>
+</html>
